@@ -1,2 +1,2 @@
 # Structures-Algorithms
-Implementation of Data Structures and Algorithms
+My implementation of frequently used data structures and algorithms.
