@@ -16,6 +16,10 @@ public class LinkedList<E> {
     return size;
   }
 
+  public void add(E data) {
+    size++;
+  }
+
   private class Node<E> {
     Node next, prev;
     E data;
