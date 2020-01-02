@@ -20,4 +20,16 @@ public class LinkedListTest {
 
     assertTrue(linkedList.size() == 4);
   }
+
+  @Test
+  public void containsItemsAppended() {
+    linkedList.add("1");
+    linkedList.add("2");
+    linkedList.add("3");
+
+    assertTrue(linkedList.contains("1"));
+    assertTrue(linkedList.contains("2"));
+    assertTrue(linkedList.contains("3"));
+  }
+  
 }
