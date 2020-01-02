@@ -30,7 +30,6 @@ public class LinkedList<E> {
   }
 
   private Node<E> nodeAtIndex(int index) {
-    assert (indexInRange(index));
     if (!indexInRange(index)){return null;}
     Node<E> node = head.getNext();
     for (int i = 0; i < index; i++) {

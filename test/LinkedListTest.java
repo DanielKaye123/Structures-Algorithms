@@ -26,7 +26,7 @@ public class LinkedListTest {
     linkedList.add("1");
     assertFalse(linkedList.isEmpty());
   }
-  
+
   @Test
   public void containsItemsAppended() {
     linkedList.add("1");
@@ -36,6 +36,13 @@ public class LinkedListTest {
     assertTrue(linkedList.contains("1"));
     assertTrue(linkedList.contains("2"));
     assertTrue(linkedList.contains("3"));
+  }
+
+  @Test
+  public void returnNullFromBadIndex(){
+    linkedList.add("1");
+    assertTrue(linkedList.get(-1) == null);
+    assertTrue(linkedList.get(1) == null);
   }
 
   @Test
