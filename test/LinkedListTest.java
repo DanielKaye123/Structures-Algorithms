@@ -39,6 +39,13 @@ public class LinkedListTest {
   }
 
   @Test
+  public void onlyContainsItemsAdded() {
+    linkedList.add("1");
+
+    assertTrue(linkedList.contains("1"));
+    assertFalse(linkedList.contains("2"));
+  }
+  @Test
   public void returnNullFromBadIndex() {
     linkedList.add("1");
     assertTrue(linkedList.get(-1) == null);
@@ -147,5 +154,5 @@ public class LinkedListTest {
 
     assertTrue(linkedList.pollFirst() == "1");
   }
-  
+
 }
