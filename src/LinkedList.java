@@ -6,7 +6,6 @@ public class LinkedList<E> {
     this.head = new Node(null);
     this.tail = new Node(null);
     head.setNext(tail);
-    tail.setPrev(head);
     this.size = 0;
   }
 
