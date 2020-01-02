@@ -39,6 +39,14 @@ public class LinkedList<E> {
     node.insertAfterNode(head);
   }
 
+  public E pollLast() {
+    size--;
+    Node<E> polledNode = tail.getPrev();
+    polledNode.removeFromList();
+
+    return polledNode.getData();
+  }
+
   public E get(int index) {
     Node<E> node = nodeAtIndex(index);
     return node != null ? node.getData() : null;
@@ -114,6 +122,12 @@ public class LinkedList<E> {
       if (node != tail) {
         this.insertBeforeNode(node.getNext());
       }
+    }
+
+    private void removeFromList() {
+      assert (this != head && this != tail);
+
+      prev.setNext(next);
     }
   }
 }

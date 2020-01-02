@@ -105,4 +105,20 @@ public class LinkedListTest {
     linkedList.add("1", 2);
     assertTrue(linkedList.isEmpty());
   }
+
+  @Test
+  public void pollLastOfSingleListReturnsEmpty() {
+    linkedList.add("1");
+    linkedList.pollLast();
+
+    linkedList.isEmpty();
+  }
+
+  @Test
+  public void pollLastReturnsValue() {
+    linkedList.add("1");
+    linkedList.add("2");
+
+    assertTrue(linkedList.pollLast() == "2");
+  }
 }
