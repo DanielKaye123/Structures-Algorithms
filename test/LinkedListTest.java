@@ -84,4 +84,25 @@ public class LinkedListTest {
     assertTrue(linkedList.get(1) == "2");
     assertTrue(linkedList.get(2) == "1");
   }
+
+  @Test
+  public void addAtIndexOfEmptyList() {
+    linkedList.add("1", 0);
+    assertTrue(linkedList.get(0) == "1");
+  }
+
+  @Test
+  public void addAtIndexIncreasesSize() {
+    linkedList.add("1", 0);
+    linkedList.add("2", 0);
+    linkedList.add("2", 0);
+
+    assertTrue(linkedList.size() == 3);
+  }
+
+  @Test
+  public void addOnlyAtValidIndex() {
+    linkedList.add("1", 2);
+    assertTrue(linkedList.isEmpty());
+  }
 }

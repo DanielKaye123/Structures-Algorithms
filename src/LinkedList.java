@@ -24,6 +24,15 @@ public class LinkedList<E> {
     node.insertBeforeNode(tail);
   }
 
+  public void add(E data, int index) {
+    if(!indexInRangeInclusive(index)) {
+      return;
+    }
+    size++;
+    Node<E> node = new Node<>(data);
+    node.insertBeforeNode(nodeAtIndex(index));
+  }
+
   public void addFirst(E data) {
     size++;
     Node<E> node = new Node<>(data);
@@ -47,6 +56,10 @@ public class LinkedList<E> {
 
   private boolean indexInRange(int index) {
     return index >= 0 && index < size();
+  }
+
+  private boolean indexInRangeInclusive(int index) {
+    return indexInRange(index) || index == size;
   }
 
   private Node<E> nodeAtIndex(int index) {
