@@ -175,4 +175,47 @@ public class LinkedListTest {
     assertFalse(linkedList.contains("2"));
     assertTrue(linkedList.size() == 2);
   }
+
+  @Test
+  public void removeFirstInstanceOfData() {
+    linkedList.add("1");
+    linkedList.add("2");
+    linkedList.add("3");
+
+    assertTrue(linkedList.remove("2"));
+    assertFalse(linkedList.contains("2"));
+    assertTrue(linkedList.size() == 2);
+  }
+
+  @Test
+  public void removeOnlyFirstInstance() {
+    linkedList.add("1");
+    linkedList.add("2");
+    linkedList.add("1");
+    linkedList.remove("1");
+
+    assertTrue(linkedList.contains("1"));
+    assertTrue(linkedList.size() == 2);
+    assertTrue(linkedList.indexOf("1") == 1);
+  }
+
+  @Test
+  public void findIndexOfFirstElement() {
+    linkedList.add("1");
+    assertTrue(linkedList.indexOf("1") == 0);
+  }
+
+  @Test
+  public void findIndexOfLastElement() {
+    linkedList.add("1");
+    linkedList.add("2");
+    linkedList.add("3");
+    assertTrue(linkedList.indexOf("3") == 2);
+  }
+
+  @Test
+  public void indexOfItemNotInListReturnsNegative() {
+    assertTrue(linkedList.indexOf("1") == -1);
+  }
+
 }

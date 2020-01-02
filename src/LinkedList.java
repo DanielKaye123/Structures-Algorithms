@@ -69,20 +69,32 @@ public class LinkedList<E> {
     return node.getData();
   }
 
+  public boolean remove(E data) {
+    int indexOfItem = indexOf(data);
+    remove(indexOfItem);
+    return indexOfItem >= 0 ? true : false;
+  }
+
   public E get(int index) {
     Node<E> node = nodeAtIndex(index);
     return node != null ? node.getData() : null;
   }
 
+  public int indexOf(E data) {
+    int index = 0;
+    for(Node<E> node = head.getNext(); node != tail; node = node.getNext()) {
+      if (node.getData() == data) {
+        return index;
+      }
+      index++;
+    }
+    return -1;
+  }
 
   public boolean contains(E data) {
-    for(Node<E> node = head; node != tail; node = node.getNext()) {
-      if (node.getData() == data) {
-        return true;
-      }
-    }
-    return false;
+    return indexOf(data) >= 0 ? true : false;
   }
+
 
   private boolean indexInRange(int index) {
     return index >= 0 && index < size();
