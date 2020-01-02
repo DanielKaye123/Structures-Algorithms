@@ -24,19 +24,17 @@ public class LinkedList<E> {
     node.insertBeforeNode(tail);
   }
 
+  public void addFirst(E data) {
+    size++;
+    Node<E> node = new Node<>(data);
+    node.insertAfterNode(head);
+  }
+
   public E get(int index) {
     Node<E> node = nodeAtIndex(index);
     return node != null ? node.getData() : null;
   }
 
-  private Node<E> nodeAtIndex(int index) {
-    if (!indexInRange(index)){return null;}
-    Node<E> node = head.getNext();
-    for (int i = 0; i < index; i++) {
-      node = node.getNext();
-    }
-    return node;
-  }
 
   public boolean contains(E data) {
     for(Node<E> node = head; node != tail; node = node.getNext()) {
@@ -49,6 +47,15 @@ public class LinkedList<E> {
 
   private boolean indexInRange(int index) {
     return index >= 0 && index < size();
+  }
+
+  private Node<E> nodeAtIndex(int index) {
+    if (!indexInRange(index)){return null;}
+    Node<E> node = head.getNext();
+    for (int i = 0; i < index; i++) {
+      node = node.getNext();
+    }
+    return node;
   }
 
   private class Node<E> {
@@ -90,5 +97,10 @@ public class LinkedList<E> {
       this.setNext(node);
     }
 
+    private void insertAfterNode(Node<E> node) {
+      if (node != tail) {
+        this.insertBeforeNode(node.getNext());
+      }
+    }
   }
 }

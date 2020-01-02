@@ -65,4 +65,23 @@ public class LinkedListTest {
     assertTrue(linkedList.get(1) == "2");
     assertTrue(linkedList.get(2) == "3");
   }
+
+  @Test
+  public void addFirstInsertsItemAtFront() {
+    linkedList.add("1");
+    linkedList.addFirst("2");
+
+    assertTrue(linkedList.get(0) == "2");
+  }
+
+  @Test
+  public void addFirstRetainsEndOfList() {
+    linkedList.add("1");
+    linkedList.addFirst("2");
+    linkedList.addFirst("3");
+
+    assertTrue(linkedList.get(0) == "3");
+    assertTrue(linkedList.get(1) == "2");
+    assertTrue(linkedList.get(2) == "1");
+  }
 }
