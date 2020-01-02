@@ -83,6 +83,9 @@ public class LinkedList<E> {
     }
 
     private void insertBeforeNode(Node<E> node) {
+      if (this.getData() == null) {
+        throw new NullPointerException("Cannot insert null node");
+      }
       this.setPrev(node.getPrev());
       this.setNext(node);
     }

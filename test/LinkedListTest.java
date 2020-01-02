@@ -39,10 +39,20 @@ public class LinkedListTest {
   }
 
   @Test
-  public void returnNullFromBadIndex(){
+  public void returnNullFromBadIndex() {
     linkedList.add("1");
     assertTrue(linkedList.get(-1) == null);
     assertTrue(linkedList.get(1) == null);
+  }
+
+  @Test
+  public void throwsNullPointerWhenNullAdded() {
+    try {
+      linkedList.add(null);
+      fail();
+    } catch (Exception e) {
+      assertTrue(e instanceof NullPointerException);
+    }
   }
 
   @Test
