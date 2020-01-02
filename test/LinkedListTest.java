@@ -107,6 +107,16 @@ public class LinkedListTest {
   }
 
   @Test
+  public void pollLastOfEmptyReturnsNull() {
+    assertTrue(linkedList.pollLast() == null);
+  }
+
+  @Test
+  public void pollFirstOfEmptyReturnsNull() {
+    assertTrue(linkedList.pollFirst() == null);
+  }
+
+  @Test
   public void pollLastOfSingleListReturnsEmpty() {
     linkedList.add("1");
     linkedList.pollLast();
@@ -121,4 +131,21 @@ public class LinkedListTest {
 
     assertTrue(linkedList.pollLast() == "2");
   }
+
+  @Test
+  public void pollFirstOfSingleListReturnsEmpty() {
+    linkedList.add("1");
+    linkedList.pollFirst();
+
+    assertTrue(linkedList.isEmpty());
+  }
+
+  @Test
+  public void pollFirstReturnsValue() {
+    linkedList.add("1");
+    linkedList.add("2");
+
+    assertTrue(linkedList.pollFirst() == "1");
+  }
+  
 }

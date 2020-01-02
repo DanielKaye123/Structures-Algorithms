@@ -40,10 +40,23 @@ public class LinkedList<E> {
   }
 
   public E pollLast() {
+    if (isEmpty()) {
+      return null;
+    }
     size--;
     Node<E> polledNode = tail.getPrev();
     polledNode.removeFromList();
 
+    return polledNode.getData();
+  }
+
+  public E pollFirst() {
+    if (isEmpty()) {
+      return null;
+    }
+    size--;
+    Node<E> polledNode = head.getNext();
+    polledNode.removeFromList();
     return polledNode.getData();
   }
 
