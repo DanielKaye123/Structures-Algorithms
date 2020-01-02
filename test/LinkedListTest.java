@@ -22,6 +22,12 @@ public class LinkedListTest {
   }
 
   @Test
+  public void notEmptyAfterItemsAdded() {
+    linkedList.add("1");
+    assertFalse(linkedList.isEmpty());
+  }
+  
+  @Test
   public void containsItemsAppended() {
     linkedList.add("1");
     linkedList.add("2");
@@ -31,5 +37,15 @@ public class LinkedListTest {
     assertTrue(linkedList.contains("2"));
     assertTrue(linkedList.contains("3"));
   }
-  
+
+  @Test
+  public void appendedItemsInOrder() {
+    linkedList.add("1");
+    linkedList.add("2");
+    linkedList.add("3");
+
+    assertTrue(linkedList.get(0) == "1");
+    assertTrue(linkedList.get(1) == "2");
+    assertTrue(linkedList.get(2) == "3");
+  }
 }

@@ -24,6 +24,21 @@ public class LinkedList<E> {
     node.insertBeforeNode(tail);
   }
 
+  public E get(int index) {
+    Node<E> node = nodeAtIndex(index);
+    return node != null ? node.getData() : null;
+  }
+
+  private Node<E> nodeAtIndex(int index) {
+    assert (indexInRange(index));
+    if (!indexInRange(index)){return null;}
+    Node<E> node = head.getNext();
+    for (int i = 0; i < index; i++) {
+      node = node.getNext();
+    }
+    return node;
+  }
+
   public boolean contains(E data) {
     for(Node<E> node = head; node != tail; node = node.getNext()) {
       if (node.getData() == data) {
@@ -33,7 +48,9 @@ public class LinkedList<E> {
     return false;
   }
 
-
+  private boolean indexInRange(int index) {
+    return index >= 0 && index < size();
+  }
 
   private class Node<E> {
     Node next, prev;
@@ -41,18 +58,20 @@ public class LinkedList<E> {
 
     Node(E data){
       this.data = data;
-      this.setPrev(null);
-      this.setNext(null);
+      this.prev = null;
+      this.next = null;
     }
 
     private E getData() {
       return this.data;
     }
     private void setPrev(Node<E> node) {
+      node.next = this;
       this.prev = node;
     }
 
     private void setNext(Node<E> node) {
+      node.prev = this;
       this.next = node;
     }
 
@@ -67,8 +86,6 @@ public class LinkedList<E> {
     private void insertBeforeNode(Node<E> node) {
       this.setPrev(node.getPrev());
       this.setNext(node);
-      node.getPrev().setNext(this);
-      node.setPrev(this);
     }
 
   }
