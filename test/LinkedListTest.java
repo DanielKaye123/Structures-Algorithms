@@ -155,4 +155,24 @@ public class LinkedListTest {
     assertTrue(linkedList.pollFirst() == "1");
   }
 
+  @Test
+  public void polledItemsNoLongerInList() {
+    linkedList.add("1");
+    linkedList.add("2");
+    linkedList.pollFirst();
+    linkedList.pollLast();
+
+    assertTrue(linkedList.isEmpty());
+  }
+
+  @Test
+  public void removeItemAtIndex() {
+    linkedList.add("1");
+    linkedList.add("2");
+    linkedList.add("3");
+
+    assertTrue(linkedList.remove(1) == "2");
+    assertFalse(linkedList.contains("2"));
+    assertTrue(linkedList.size() == 2);
+  }
 }

@@ -59,6 +59,16 @@ public class LinkedList<E> {
     return polledNode.getData();
   }
 
+  public E remove(int index) {
+    if (!indexInRange(index)) {
+      return null;
+    }
+    size--;
+    Node<E> node = nodeAtIndex(index);
+    node.removeFromList();
+    return node.getData();
+  }
+
   public E get(int index) {
     Node<E> node = nodeAtIndex(index);
     return node != null ? node.getData() : null;
