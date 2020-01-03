@@ -95,6 +95,17 @@ public class LinkedList<E> {
     return indexOf(data) >= 0 ? true : false;
   }
 
+  public Object[] toArray() {
+    Object[] array = new Object[size()];
+
+    int i = 0;
+    for (Node<E> node = head.getNext(); node != tail; node = node.getNext()) {
+      array[i] = node.getData();
+      i++;
+    }
+    //System.out.println(array.length);
+    return array;
+  }
 
   private boolean indexInRange(int index) {
     return index >= 0 && index < size();

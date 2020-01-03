@@ -1,5 +1,8 @@
 import org.junit.Test;
 
+import java.util.Arrays;
+import java.util.Objects;
+
 import static org.junit.Assert.*;
 
 public class LinkedListTest {
@@ -216,6 +219,17 @@ public class LinkedListTest {
   @Test
   public void indexOfItemNotInListReturnsNegative() {
     assertTrue(linkedList.indexOf("1") == -1);
+  }
+
+  @Test
+  public void toArrayTest() {
+    linkedList.add("1");
+    linkedList.add("2");
+    linkedList.add("3");
+
+    Object[] array = {"1", "2", "3"};
+    assertTrue(Arrays.equals(linkedList.toArray(), array));
+
   }
 
 }
