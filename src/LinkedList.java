@@ -103,7 +103,6 @@ public class LinkedList<E> {
       array[i] = node.getData();
       i++;
     }
-    //System.out.println(array.length);
     return array;
   }
 
