@@ -17,4 +17,11 @@ public class GraphTest {
     assertTrue(graph.size() == 1);
   }
 
+  @Test
+  public void noDuplicateVerticies() {
+    graph.addVertex("1");
+    graph.addVertex("1");
+    assertTrue(graph.size() == 1);
+  }
+
 }
