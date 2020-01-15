@@ -46,4 +46,17 @@ public class GraphTest {
     System.out.println(graph.toString());
     assertEquals(graph.toString(),"1 -> 2 3 4 \n2 -> 3 4 \n3 -> 4 \n4 -> \n");
   }
+
+  /*Test that the to string method returns the same value after multiple calls */
+  @Test
+  public void graphToStringRetainsIntegrity() {
+    graph.addEdge("1", "2");
+    graph.addEdge("1", "3");
+    graph.addEdge("1", "4");
+    graph.addEdge("2", "3");
+    graph.addEdge("2", "4");
+    graph.addEdge("3", "4");
+
+    assertEquals(graph.toString(), graph.toString());
+  }
 }
