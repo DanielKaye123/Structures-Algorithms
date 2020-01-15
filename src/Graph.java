@@ -21,7 +21,20 @@ public class Graph<E> {
 
     graph.get(vertex1).add(vertex2);
   }
-  
+
+  @Override
+  public String toString() {
+    String graphString = "";
+    for (Map.Entry<E, LinkedList<E>> entry : graph.entrySet()) {
+      graphString += entry.getKey() + " -> ";
+
+      for(int i = 0; i < entry.getValue().size(); i++) {
+        graphString += entry.getValue().get(i) + " ";
+      }
+      graphString += "\n";
+    }
+    return graphString;
+  }
 
   public int size() {
     return graph.size();
