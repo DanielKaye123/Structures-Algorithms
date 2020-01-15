@@ -2,8 +2,7 @@ import org.junit.Test;
 
 import java.io.File;
 
-import static junit.framework.TestCase.assertEquals;
-import static junit.framework.TestCase.assertTrue;
+import static junit.framework.TestCase.*;
 
 public class GraphTest {
 
@@ -59,4 +58,41 @@ public class GraphTest {
 
     assertEquals(graph.toString(), graph.toString());
   }
+
+  @Test
+  public void isCyclicReturnsFalseForEmptyGraph() {
+    assertFalse(graph.isCyclic());
+  }
+
+  @Test
+  public void isCyclicReturnsFalseForSingleVertex() {
+    graph.addVertex("1");
+    assertFalse(graph.isCyclic());
+  }
+
+  @Test
+  public void returnsFalseWhenNoCycle() {
+    graph.addEdge("1", "2");
+    graph.addEdge("2", "3");
+    assertFalse(graph.isCyclic());
+  }
+
+  @Test
+  public void cyclicWhenLoop() {
+    graph.addEdge("1", "1");
+    assertTrue(graph.isCyclic());
+  }
+
+  @Test
+  public void isCyclicReturnsTrueWhenManyCycles() {
+    graph.addEdge("1", "2");
+    graph.addEdge("1", "3");
+    graph.addEdge("1", "4");
+    graph.addEdge("2", "3");
+    graph.addEdge("2", "4");
+    graph.addEdge("3", "4");
+
+    assertTrue(graph.isCyclic());
+  }
+
 }

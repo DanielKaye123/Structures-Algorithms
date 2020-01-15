@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.function.ToDoubleBiFunction;
 
 public class Graph<E> {
@@ -9,6 +6,10 @@ public class Graph<E> {
 
   public Graph() {
     this.graph = new HashMap<>();
+  }
+
+  public int size() {
+    return graph.size();
   }
 
   public void addVertex(E vertex) {
@@ -36,9 +37,25 @@ public class Graph<E> {
     return graphString;
   }
 
-  public int size() {
-    return graph.size();
+  public boolean isCyclic() {
+    if (graph.keySet().isEmpty()) {
+      return false;
+    }
+    HashSet<E> visited = new HashSet<>();
+    return isCyclicUtil(graph.keySet().iterator().next(), visited);
   }
 
-
+  private boolean isCyclicUtil(E vertex, Set<E> visited) {
+    visited.add(vertex);
+    for (int i = 0 ; i < graph.get(vertex).size(); i++) {
+      E v = graph.get(vertex).get(i);
+      if (visited.contains(v)) {
+        return true;
+      }
+      if (isCyclicUtil(v, visited)) {
+        return true;
+      }
+    }
+    return false;
+  }
 }
