@@ -49,10 +49,7 @@ public class Graph<E> {
     visited.add(vertex);
     for (int i = 0 ; i < graph.get(vertex).size(); i++) {
       E v = graph.get(vertex).get(i);
-      if (visited.contains(v)) {
-        return true;
-      }
-      if (isCyclicUtil(v, visited)) {
+      if (visited.contains(v) || isCyclicUtil(v, visited)) {
         return true;
       }
     }
