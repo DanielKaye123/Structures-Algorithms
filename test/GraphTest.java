@@ -18,10 +18,16 @@ public class GraphTest {
   }
 
   @Test
-  public void noDuplicateVerticies() {
+  public void noDuplicateVertices() {
     graph.addVertex("1");
     graph.addVertex("1");
     assertTrue(graph.size() == 1);
+  }
+
+  @Test
+  public void addEdgeCreatesNewVertices() {
+    graph.addEdge("1", "2");
+    assertTrue(graph.size() == 2);;
   }
 
 }

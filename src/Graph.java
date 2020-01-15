@@ -12,13 +12,16 @@ public class Graph<E> {
   }
 
   public void addVertex(E vertex) {
-    LinkedList<E> edges = new LinkedList<>();
-    graph.putIfAbsent(vertex, edges);
+    graph.putIfAbsent(vertex, new LinkedList<>());
   }
 
-  public void addEdge(E node1, E node2) {
-    //TODO
+  public void addEdge(E vertex1, E vertex2) {
+    addVertex(vertex1);
+    addVertex(vertex2);
+
+    graph.get(vertex1).add(vertex2);
   }
+  
 
   public int size() {
     return graph.size();
