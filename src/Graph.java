@@ -21,6 +21,14 @@ public class Graph<E> {
     addVertex(vertex2);
 
     graph.get(vertex1).add(vertex2);
+    graph.get(vertex2).add(vertex1);
+  }
+
+  public void addDirectedEdge(E vertex1, E vertex2) {
+    addVertex(vertex1);
+    addVertex(vertex2);
+
+    graph.get(vertex1).add(vertex2);
   }
 
   @Override
@@ -42,16 +50,24 @@ public class Graph<E> {
       return false;
     }
     HashSet<E> visited = new HashSet<>();
-    return isCyclicUtil(graph.keySet().iterator().next(), visited);
+    return isCyclicUtil(graph.keySet().iterator().next(), new HashSet<>(), new HashMap<>());
   }
 
-  private boolean isCyclicUtil(E vertex, Set<E> visited) {
+  private boolean isCyclicUtil(E vertex, Set<E> visited, Map<E, E> parent) {
     visited.add(vertex);
     for (int i = 0 ; i < graph.get(vertex).size(); i++) {
       E v = graph.get(vertex).get(i);
-      if (visited.contains(v) || isCyclicUtil(v, visited)) {
+
+      if (!visited.contains(v) && parent.get(vertex) != v) {
+        parent.put(v, vertex);
+        return isCyclicUtil(v, visited, parent);
+      }
+
+      if (visited.contains(v) && parent.get(vertex) != v ) {
         return true;
       }
+
+
     }
     return false;
   }
