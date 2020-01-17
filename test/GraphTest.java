@@ -38,6 +38,33 @@ public class GraphTest {
     return graph2;
   }
 
+  /*Graph3: Connected, cyclic, size 4 */
+  private Graph<Integer> graph3() {
+    Graph<Integer> graph3= new Graph<>();
+    graph3.addEdge(1,2);
+    graph3.addEdge(1,3);
+    graph3.addEdge(1,4);
+    graph3.addEdge(2,3);
+    graph3.addEdge(2,4);
+    graph3.addEdge(3,3);
+    graph3.addEdge(3,4);
+    return graph3;
+  }
+
+  /*Graph4: Connected, cyclic, size 4 */
+  private Graph<String> graph4() {
+    Graph<String> graph4 = new Graph<>();
+    graph4.addDirectedEdge("1", "2");
+    graph4.addDirectedEdge("1", "3");
+    graph4.addDirectedEdge("1", "4");
+    graph4.addDirectedEdge("2", "3");
+    graph4.addDirectedEdge("2", "4");
+    graph4.addDirectedEdge("3", "4");
+    graph4.addDirectedEdge("4", "1");
+    return graph4;
+  }
+  
+
   @Test
   public void graphInitialisedWithSizeZero() {
     assertTrue(graph.size() == 0);
@@ -49,6 +76,13 @@ public class GraphTest {
     assertTrue(graph.size() == 1);
   }
 
+  @Test
+  public void sizeTest() {
+    assertEquals(graph4().size(), 4);
+    assertEquals(graph2().size(), 11);
+    assertEquals(graph3().size(), 4);
+    assertEquals(graph4().size(), 4);
+  }
   @Test
   public void noDuplicateVertices() {
     graph.addVertex("1");
@@ -101,8 +135,9 @@ public class GraphTest {
   @Test
   public void isCyclicTest() {
     assertFalse(graph1().isCyclic());
-    System.out.println(graph2());
     assertTrue(graph2().isCyclic());
+    assertTrue(graph3().isCyclic());
+    assertTrue(graph4().isCyclic());
   }
 
 }
