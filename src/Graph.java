@@ -49,7 +49,6 @@ public class Graph<E> {
     if (graph.keySet().isEmpty()) {
       return false;
     }
-    HashSet<E> visited = new HashSet<>();
     return isCyclicUtil(graph.keySet().iterator().next(), new HashSet<>(), new HashMap<>());
   }
 
@@ -66,9 +65,14 @@ public class Graph<E> {
       if (visited.contains(v) && parent.get(vertex) != v ) {
         return true;
       }
-
-
     }
-    return false;
+
+    if (graph.keySet().size() == visited.size()) {
+      return false;
+    } else {
+      Set<E> subGraph = new HashSet<>(graph.keySet());
+      subGraph.removeAll(visited);
+      return isCyclicUtil(subGraph.iterator().next(), visited, new HashMap<>());
+    }
   }
 }

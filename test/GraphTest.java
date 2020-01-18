@@ -63,7 +63,50 @@ public class GraphTest {
     graph4.addDirectedEdge("4", "1");
     return graph4;
   }
-  
+
+  /*Graph5: Disconnected, cyclic, size 15 */
+  private Graph<Integer> graph5() {
+    Graph<Integer> graph5 = new Graph<>();
+    graph5.addEdge(1,2);
+    graph5.addEdge(2,3);
+    graph5.addEdge(2,4);
+    graph5.addEdge(5,4);
+    /* Subgraph */
+    graph5.addEdge(6,7);
+    graph5.addEdge(7,8);
+    graph5.addEdge(7,9);
+    graph5.addEdge(8,9); //Cycle
+    /* Subgraph */
+    graph5.addEdge(10,11);
+    graph5.addEdge(10,12);
+    graph5.addEdge(12,13);
+    graph5.addEdge(13,14);
+    graph5.addEdge(13,15);
+    return graph5;
+  }
+
+  /*Graph6: Disconnected, cyclic, size 15 */
+  private Graph<Integer> graph6() {
+    Graph<Integer> graph6 = new Graph<>();
+    graph6.addEdge(1,2);
+    graph6.addEdge(2,3);
+    graph6.addEdge(2,4);
+    graph6.addEdge(5,4);
+    /* Subgraph */
+    graph6.addEdge(6,7);
+    graph6.addEdge(7,8);
+    /* Subgraph */
+    graph6.addEdge(9,9); //Cycle
+    /* Subgraph */
+    graph6.addEdge(10,11);
+    graph6.addEdge(10,12);
+    graph6.addEdge(12,13);
+    graph6.addEdge(13,14);
+    graph6.addEdge(13,15);
+    return graph6;
+  }
+
+
 
   @Test
   public void graphInitialisedWithSizeZero() {
@@ -82,6 +125,8 @@ public class GraphTest {
     assertEquals(graph2().size(), 11);
     assertEquals(graph3().size(), 4);
     assertEquals(graph4().size(), 4);
+    assertEquals(graph5().size(), 15);
+    assertEquals(graph6().size(), 15);
   }
   @Test
   public void noDuplicateVertices() {
@@ -138,6 +183,8 @@ public class GraphTest {
     assertTrue(graph2().isCyclic());
     assertTrue(graph3().isCyclic());
     assertTrue(graph4().isCyclic());
+    assertTrue(graph5().isCyclic());
+    assertTrue(graph6().isCyclic());
   }
 
 }
